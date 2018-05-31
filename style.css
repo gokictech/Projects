@@ -1,4 +1,67 @@
-li.list-group-item
-{
+li.list-group-item {
     padding-top: 0px;
+}
+
+.title-line {
+    text-align: left;
+    box-sizing: border-box;
+    height: 1px;
+    width: 60px;
+    border: 1px solid;
+    border-color: #606060;
+    margin: 10px 0px 10px 0px;
+}
+
+.card-stamp
+{
+    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #606060;
+    color: #ffffff;
+    border-radius: 0rem .25rem 0rem .95rem;
+    text-align: center;
+    font-size: 1em;
+}
+
+.description > div {
+    min-height: 100px;
+}
+
+.large-text {
+    font-size: 3em;
+}
+
+.section-label
+{
+    color: #2e2e2e;
+    
+    font-size: 16px;	
+    font-weight: 500;
+}
+
+.section-height
+{
+    height: 40px;
+}
+
+
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+}
+
+.your-project-card
+{
+    background-color: #94DEC7;
+}
+
+.btn-join
+{
+    width: 100%;
 }

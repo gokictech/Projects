@@ -11,8 +11,9 @@
     <title>GoKiC : Projects</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
     <!-- Custom styles for this template -->
     <link href="style.css" rel="stylesheet">
 </head>
@@ -24,22 +25,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
-                        <h4 class="text-white">About</h4>
-                        <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it
-                            a few sentences long so folks can pick up some informative tidbits. Then, link them off to some
-                            social networking sites or contact information.</p>
+                        <h4 class="text-white">Mission</h4>
+                        <p class="text-muted">Our focus is to empower kids of color with education in computer science so they can use technology to help make a positive impact in their communities. We believe that once you know how to code, there are NO LIMITS to your imagination.</p>
+                        <p class="text-muted">Here at GOKiC, we put this power into the hands and hearts of our children. We not only teach them about programming, robotics and computer science, but we also help them unlock their creative potential and critical thinking skills.</p>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
                         <h4 class="text-white">Contact</h4>
                         <ul class="list-unstyled">
-                            <li>
+                            <!-- <li>
                                 <a href="#" class="text-white">Follow on Twitter</a>
+                            </li> -->
+                            <li>
+                                <a href="https://www.facebook.com/gokictech" class="text-white">Like us on Facebook</a>
                             </li>
                             <li>
-                                <a href="#" class="text-white">Like on Facebook</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-white">Email me</a>
+                                <a href="mailto:pedro@gokic.org" class="text-white">Email us</a>
                             </li>
                         </ul>
                     </div>
@@ -50,7 +50,8 @@
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> -->
-                    <strong>GoKiC</strong> <span>_:> Projects</span>
+                    <strong>GoKiC</strong>
+                    <span>_:> Projects</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -73,30 +74,80 @@
                 </p>
             </div>
         </section> -->
+        <!-- <div id="skill-filter">
+            <a href="#" class="badge badge-primary" onclick="myFunction(this)">JS</a>
+            <a href="#" class="badge badge-secondary" onclick="myFunction(this)">CSS</a>
+            <a href="#" class="badge badge-warning" onclick="myFunction(this)">Bootcamp Hero</a>
+        </div> -->
 
         <div class="album py-5 bg-light">
             <div class="container">
                 <div id="project-list" class="row">
                     <div id="hidden-project-template" style="display:none" class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img id="image" class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                        <div class="card mb-4 box-shadow ">
                             <div class="card-body">
                                 <h5 id="title" class="card-title">Project Name</h5>
-                                <h6 id="subtitle" class="card-subtitle mb-2 text-muted">project subtitle</h6>
-                                <p id="description" class="card-text">project description</p>
-                                <small class="text-muted">Progress</small>
-                                <div id="progress-bar" class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                <h6 id="subtitle" class="card-subtitle mb-2">subtitle text</h6>
+                                <hr class="title-line"></hr>
+                                <div class="description">
+                                    <div id="description-id">
+                                        <span class="more">
+                                            <em>Lorem Ipsum</em> is simply
+                                            <strong>dummy text</strong> of the printing and typesetting industry. It has been the
+                                            industry's standard dummy text ever
+                                            <strong>since the 1500s</strong>, when an unknown printer took a galley of type and scrambled
+                                            it to make a type specimen book.
+                                            <em>Lorem Ipsum</em> has survived not only
+                                            <strong>five centuries</strong>, but also the leap into
+                                            <strong>electronic typesetting</strong>, remaining essentially unchanged.
+                                        </span>
+                                    </div>
                                 </div>
-                                <small id="iteration" class="text-muted float-right">v2</small>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <small class="text-muted">Volunteers</small>
-                                    <h1 id="number-volunteers">7</h1>
+                                    <div class="row align-items-center">
+                                        <div class="col section-height">
+                                            <span class="section-label">Progress</span>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <div id="progress-bar" class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <small class="text-muted">
+                                                <span>Version: </span>
+                                                <span id="iteration">v2</span>
+                                            </small>
+                                        </div>
+
+                                    </div>
                                 </li>
                                 <li class="list-group-item">
-                                    <small class="text-muted">Skills</small>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <span class="section-label">Volunteers</span>
+                                        </div>
+                                        <div class="col">
+                                            <!-- <small class="section-label">Volunteers Needed</small> -->
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <span id="volunteers-number" class="large-text">20</span>
+                                            <small class="text-muted">joined</small>
+                                        </div>
+                                        <div class="col">
+                                            <span id="volunteers-needed" class="large-text">27</span>
+                                            <small class="text-muted">ideal</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="section-height">
+                                        <span class="section-label ">Skills</span>
+                                    </div>
                                     <div id="skills-container">
                                         <span class="badge badge-primary">JS</span>
                                         <span class="badge badge-secondary">CSS</span>
@@ -110,11 +161,32 @@
                                 </li>
                             </ul>
                             <div class="card-body">
-                                <a id="join-project-btn" href="#" class="btn btn-sm btn-primary" target="_blank">Join</a>
+                                <a id="join-project-btn" href="#" class="btn btn-sm btn-primary btn-join" target="_blank">JOIN</a>
                                 <a id="project-page-btn" href="#" class="btn btn-sm btn-outline-secondary pull-right" target="_blank">Project Page</a>
+                            </div>
+                            <div class="card-stamp" id="project-type" style="display:none">
+                                Web
                             </div>
                         </div>
                     </div>
+                    <div id="your-project"  style="display:none;" class="col-md-4">
+                            <div class="card mb-4 box-shadow your-project-card">
+                                <div class="card-body">
+                                    <h5 id="title" class="card-title">You: I have an idea!</h5>
+                                    <h6 id="subtitle" class="card-subtitle mb-2">GoKiC: Awesome!</h6>
+                                    <hr class="title-line"></hr>
+                                    <div class="description">
+                                        Click the button below to tell us about your idea
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                        <a id="join-project-btn" href="#" class="btn btn-sm btn-primary btn-join" style="background-color: #47C59F; border-color: #47C59F; color: #205645;" target="_blank">Tell us all about it! :)</a>
+                                    </div>
+                                <div class="card-body">
+                                        Feel free to also email us at : pedro@gokic.org
+                                    </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -140,8 +212,51 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.dotdotdot/3.2.2/jquery.dotdotdot.js"></script> -->
+    <script src="jquery.tsv.js"></script>
     <script src="projects.js"></script>
 </body>
+
+
+
+<!-- <template>
+        <div class="card mb-4 box-shadow">
+                <img id="image" class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                <div class="card-body">
+                    <h5 id="title" class="card-title">Project Name</h5>
+                    <h6 id="subtitle" class="card-subtitle mb-2 text-muted">project subtitle</h6>
+                    <p id="description" class="card-text">project description</p>
+                    <small class="text-muted">Progress</small>
+                    <div id="progress-bar" class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small id="iteration" class="text-muted float-right">v2</small>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <small class="text-muted">Volunteers</small>
+                        <h1><span id="volunteers-number"></span> / <span id="volunteers-needed"></span></h1>
+                    </li>
+                    <li class="list-group-item">
+                        <small class="text-muted">Skills</small>
+                        <div id="skills-container">
+                            <span class="badge badge-primary">JS</span>
+                            <span class="badge badge-secondary">CSS</span>
+                            <span class="badge badge-success">SQL</span>
+                            <span class="badge badge-danger">Designer</span>
+                            <span class="badge badge-warning">Management</span>
+                            <span class="badge badge-info">Instructor</span>
+                            <span class="badge badge-light">Tester</span>
+                            <span class="badge badge-dark">Intern</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a id="join-project-btn" href="#" class="btn btn-sm btn-primary" target="_blank">Join</a>
+                    <a id="project-page-btn" href="#" class="btn btn-sm btn-outline-secondary pull-right" target="_blank">Project Page</a>
+                </div>
+            </div>
+</template> -->
 
 </html>
