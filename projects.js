@@ -41,24 +41,9 @@ populatePage = function () {
                 return a.order - b.order;
             });
 
-            var addYourOwn = {
-                order: '1000000000',
-                hide: 'FALSE',
-                title: 'have an idea?',
-                type: 'NewIdea',
-                progress: '0',
-                iteration: '1',
-                volunteersNeeded: '',	
-                projectUrl: '',	image: '',
-                joinProjectUrl: '',
-                skills: '',	
-                description: '',
-            }
-            projects.push()
-
             $.each(projects, function (index, project) {
                 try {
-                    if(project.hide === "TRUE") { return true; }
+                    if(project.show === "FALSE") { return true; }
 
                     project.volunteersNumber = projectVolunteers[project.title];
                     projects[index].id = index;
