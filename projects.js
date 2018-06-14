@@ -26,7 +26,8 @@ populatePage = function () {
 
         var yourProject = $('#your-project').clone();
         $('#your-project').remove();
-
+        // Initialize how many projects are currently available for people to work on
+        $('#project-list').append("<div id='available-projects' hidden=''>" + 0 + "</div>");
         getProjects().then(function (projects) {
 
             // copy your project element
@@ -49,12 +50,13 @@ populatePage = function () {
                     projects[index].id = index;
                     var card = buildCard(template, project);
                     $('#project-list').append(card);
+                    // Increment available projects count
+                    $('#available-projects').text(parseInt($('#available-projects').text()) + 1);
                 }
                 catch (err) {
                     console.error(err);
                 }
             });
-
             truncateDescriptionLight();
 
             yourProject.removeAttr('id');
@@ -134,8 +136,11 @@ buildCard = function (template, project) {
             projectTags[skill] = [];
         }
         projectTags[skill].push(project.id);
-        skillsContainer.append('<a href="#" class="badge badge-secondary">' + skill + '</a> ');
+	    // Changed href=# to onclick, which has the side effect of turning the text black, as it inherits .a:not({href}):not{[tabindex]{ color: inherit }, which overwrites color:[#fff]
+        skillsContainer.append('<a onclick="return filter(\'' + skill + '\')" class="badge badge-secondary" id="skill-' + index + '">' + skill + '</a> ');
     });
+    // This will add a hidden skill count to the card, which allows us to find the elements
+    skillsContainer.append( '<div id="skill-count" hidden="">' + (project.skills.split(",")).length +  '</div>');
 
     var joinUrl = project.joinProjectUrl;
 
@@ -167,6 +172,48 @@ buildCard = function (template, project) {
 
     return item;
 
+}
+
+filter = function(filterSkill) {
+    // Iterate through each project card
+        // if the project card does NOT have the skill, we hide/unhide it
+        // if the card HAS the skill, we add the attribute "selected" to the class for the skill.
+        //
+    //
+    projCount =parseInt($('#available-projects').text());
+    for(var currentProj = 0; currentProj < projCount; currentProj++)
+    {
+        card = $('#project-card-' + currentProj);
+        var skillsContainer = card.find('#skills-container');
+        var skillsCount =parseInt(skillsContainer.find('#skill-count').html());
+        var i;
+        var found=false;
+        for(i = 0; i < skillsCount ; i++)
+        {
+            var skillObj = skillsContainer.find('#skill-' + i );
+            if (skillObj.html() == filterSkill)
+            {
+                // Mark it found so we know card has been processed
+                found = true;
+                // If the card has the skill, mark it selected
+                var selected = "Selected";
+                 // If the card has the skill, and was previously selected, we need to unfilter it so it is actually visible again
+                if(skillObj.hasClass(selected))
+                {
+                    skillObj.removeClass(selected);
+                }
+                else
+                {
+                    skillObj.addClass(selected);
+                }
+            }
+        }
+        if (!found)
+        {
+            // Toggle the cards visibility
+            card.toggle();
+        }
+    }
 }
 
 imageExists = function (url, callback) {
