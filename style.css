@@ -65,3 +65,8 @@ a.morelink {
 {
     width: 100%;
 }
+
+.selected
+{
+    color: #000000 !important;
+}
