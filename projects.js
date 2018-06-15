@@ -195,8 +195,8 @@ filter = function(filterSkill) {
     }
 
     // Iterate through each project card
-        // if the project card does NOT have any of the current filtered skills, we hide it
-        // if the card HAS at one of the skill, we unhide it
+        // if the project card does NOT have all of the current filtered skills, we hide it
+        // else we show it
         //
         // if the card has the skill that raised the event, we add/remove the attribute "selected" to the class for the skill.
         //
@@ -209,19 +209,13 @@ filter = function(filterSkill) {
         var skillsContainer = card.find('#skills-container');
         var skillsCount =parseInt(skillsContainer.find('#skill-count').html());
         var i;
-        var showCard = false;
+        cardSkills = [];
 
         for(i = 0; i < skillsCount ; i++)
         {
-            // retrieve skill value
             var skillObj = skillsContainer.find('#skill-' + i );
             skillStr = skillObj.html();
-
-            // if skill is on the list of skillFilters - set show card flag
-            if(skillFilterList.indexOf(skillStr) >= 0 || skillFilterList.length === 0)
-            {
-                showCard = true;
-            }
+            cardSkills.push(skillStr);
 
             // if current skill is the one that raised the event
             // add/remove the selected class
@@ -240,6 +234,14 @@ filter = function(filterSkill) {
                 }
             }
         }
+
+        //
+        // show card only if it contains all the skills in the skill filter list
+        //
+        var showCard = cardSkills.filter(function (elem) {
+            return skillFilterList.indexOf(elem) > -1;
+        }).length == skillFilterList.length
+
 
         if (showCard)
         {
