@@ -105,6 +105,10 @@ buildCard = function (template, project) {
     titleLine.css({ 'border-color': color });
 
     var title = item.find('#title');
+    // Create a link to the project page (if applicable) 
+    if(project.projectUrl != ""){
+        title.wrap("<a href=\"" + project.projectUrl + "\"></a>")
+    }
     title.text(project.title);
     title.css({ 'color': color });
 
@@ -154,11 +158,6 @@ buildCard = function (template, project) {
     }
     item.find('#join-project-btn').attr('href', joinUrl);
     item.find('#join-project-btn').css({'background-color': color, 'border-color': color});
-
-    if(project.projectUrl === "")
-    {
-        item.find('#project-page-btn').remove();
-    }
 
     // No images on cards - saving code as backup
     // imageExists(project.image, function (exists) {
