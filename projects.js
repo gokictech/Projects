@@ -27,7 +27,7 @@ populatePage = function () {
         var yourProject = $('#your-project').clone();
         $('#your-project').remove();
         // Initialize how many projects are currently available for people to work on
-        $('#project-list').append("<div id='available-projects' hidden=''>" + 0 + "</div>");
+        var availableProjectsCount = 0;
         getProjects().then(function (projects) {
 
             // copy your project element
@@ -51,12 +51,14 @@ populatePage = function () {
                     var card = buildCard(template, project);
                     $('#project-list').append(card);
                     // Increment available projects count
-                    $('#available-projects').text(parseInt($('#available-projects').text()) + 1);
+                    availableProjectsCount += 1;
                 }
                 catch (err) {
                     console.error(err);
                 }
             });
+
+            $('#project-list').append("<div id='available-projects' hidden=''>" + availableProjectsCount + "</div>");
             truncateDescriptionLight();
 
             yourProject.removeAttr('id');
