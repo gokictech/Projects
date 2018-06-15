@@ -177,12 +177,31 @@ buildCard = function (template, project) {
 
 }
 
+var skillFilterList = [];
 filter = function(filterSkill) {
+    
+    // Keep list of currently filtered skills
+        // add/remove skill to list of current filtered skills
+    //
+
+    var idx = skillFilterList.indexOf(filterSkill);
+    if(idx >= 0)
+    {
+        skillFilterList.splice(idx, 1);
+    }
+    else 
+    {
+        skillFilterList.push(filterSkill);
+    }
+
     // Iterate through each project card
-        // if the project card does NOT have the skill, we hide/unhide it
-        // if the card HAS the skill, we add the attribute "selected" to the class for the skill.
+        // if the project card does NOT have any of the current filtered skills, we hide it
+        // if the card HAS at one of the skill, we unhide it
+        //
+        // if the card has the skill that raised the event, we add/remove the attribute "selected" to the class for the skill.
         //
     //
+
     projCount =parseInt($('#available-projects').text());
     for(var currentProj = 0; currentProj < projCount; currentProj++)
     {
@@ -190,18 +209,28 @@ filter = function(filterSkill) {
         var skillsContainer = card.find('#skills-container');
         var skillsCount =parseInt(skillsContainer.find('#skill-count').html());
         var i;
-        var found=false;
+        var showCard = false;
+
         for(i = 0; i < skillsCount ; i++)
         {
+            // retrieve skill value
             var skillObj = skillsContainer.find('#skill-' + i );
-            if (skillObj.html() == filterSkill)
+            skillStr = skillObj.html();
+
+            // if skill is on the list of skillFilters - set show card flag
+            if(skillFilterList.indexOf(skillStr) >= 0 || skillFilterList.length === 0)
             {
-                // Mark it found so we know card has been processed
-                found = true;
-                // If the card has the skill, mark it selected
+                showCard = true;
+            }
+
+            // if current skill is the one that raised the event
+            // add/remove the selected class
+            if (skillStr === filterSkill)
+            {
                 var selected = "selected";
-                 // If the card has the skill, and was previously selected, we need to unfilter it so it is actually visible again
-                if(skillObj.hasClass(selected))
+
+                // toggle skill selected class
+                if(skillObj.hasClass(selected) && skillFilterList.indexOf(skillStr) === -1)
                 {
                     skillObj.removeClass(selected);
                 }
@@ -212,10 +241,13 @@ filter = function(filterSkill) {
             }
         }
 
-        if (!found)
+        if (showCard)
         {
-            // Toggle the cards visibility
-            card.fadeToggle();
+            card.fadeIn();
+        }
+        else 
+        {
+            card.fadeOut();
         }
     }
 }
