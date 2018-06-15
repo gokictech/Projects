@@ -140,7 +140,7 @@ buildCard = function (template, project) {
         projectTags[skill].push(project.id);
 	    // Changed href=# to onclick, which has the side effect of turning the text black, as it inherits .a:not({href}):not{[tabindex]{ color: inherit }, which overwrites color:[#fff]
         // Explicitly setting the style in the html overrides the value from bootstrap w/o having to use !important
-        skillsContainer.append('<a onclick="return filter(\'' + skill + '\')" class="badge badge-secondary" id="skill-' + index + '" style="color: #fff">' + skill + '</a> ');
+        skillsContainer.append('<a onclick="return filter(\'' + skill + '\')" class="skill badge badge-secondary" id="skill-' + index + '" style="color: #fff">' + skill + '</a> ');
     });
     // This will add a hidden skill count to the card, which allows us to find the elements
     skillsContainer.append( '<div id="skill-count" hidden="">' + (project.skills.split(",")).length +  '</div>');
@@ -211,10 +211,11 @@ filter = function(filterSkill) {
                 }
             }
         }
+
         if (!found)
         {
             // Toggle the cards visibility
-            card.toggle();
+            card.fadeToggle();
         }
     }
 }

@@ -68,5 +68,9 @@ a.morelink {
 
 .selected
 {
-    color: #000000 !important;
+    background-color: black !important;
+}
+
+.skill {
+    cursor: pointer;
 }
