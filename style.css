@@ -74,3 +74,21 @@ a.morelink {
 .skill {
     cursor: pointer;
 }
+
+
+.logo, .logo:hover {
+    display: block;
+    text-decoration: underline;
+    
+}
+
+.logo a {
+    color: white;
+}
+
+div.justify-content-between
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 100%;
+}
