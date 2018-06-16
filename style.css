@@ -65,3 +65,12 @@ a.morelink {
 {
     width: 100%;
 }
+
+.selected
+{
+    background-color: black !important;
+}
+
+.skill {
+    cursor: pointer;
+}

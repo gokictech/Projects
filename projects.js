@@ -26,7 +26,8 @@ populatePage = function () {
 
         var yourProject = $('#your-project').clone();
         $('#your-project').remove();
-
+        // Initialize how many projects are currently available for people to work on
+        var availableProjectsCount = 0;
         getProjects().then(function (projects) {
 
             // copy your project element
@@ -49,12 +50,15 @@ populatePage = function () {
                     projects[index].id = index;
                     var card = buildCard(template, project);
                     $('#project-list').append(card);
+                    // Increment available projects count
+                    availableProjectsCount += 1;
                 }
                 catch (err) {
                     console.error(err);
                 }
             });
 
+            $('#project-list').append("<div id='available-projects' hidden=''>" + availableProjectsCount + "</div>");
             truncateDescriptionLight();
 
             yourProject.removeAttr('id');
@@ -138,8 +142,12 @@ buildCard = function (template, project) {
             projectTags[skill] = [];
         }
         projectTags[skill].push(project.id);
-        skillsContainer.append('<a href="#" class="badge badge-secondary">' + skill + '</a> ');
+	    // Changed href=# to onclick, which has the side effect of turning the text black, as it inherits .a:not({href}):not{[tabindex]{ color: inherit }, which overwrites color:[#fff]
+        // Explicitly setting the style in the html overrides the value from bootstrap w/o having to use !important
+        skillsContainer.append('<a onclick="return filter(\'' + skill + '\')" class="skill badge badge-secondary" id="skill-' + index + '" style="color: #fff">' + skill + '</a> ');
     });
+    // This will add a hidden skill count to the card, which allows us to find the elements
+    skillsContainer.append( '<div id="skill-count" hidden="">' + (project.skills.split(",")).length +  '</div>');
 
     var joinUrl = project.joinProjectUrl;
 
@@ -166,6 +174,83 @@ buildCard = function (template, project) {
 
     return item;
 
+}
+
+var skillFilterList = [];
+filter = function(filterSkill) {
+    
+    // Keep list of currently filtered skills
+        // add/remove skill to list of current filtered skills
+    //
+
+    var idx = skillFilterList.indexOf(filterSkill);
+    if(idx >= 0)
+    {
+        skillFilterList.splice(idx, 1);
+    }
+    else 
+    {
+        skillFilterList.push(filterSkill);
+    }
+
+    // Iterate through each project card
+        // if the project card does NOT have all of the current filtered skills, we hide it
+        // else we show it
+        //
+        // if the card has the skill that raised the event, we add/remove the attribute "selected" to the class for the skill.
+        //
+    //
+
+    projCount =parseInt($('#available-projects').text());
+    for(var currentProj = 0; currentProj < projCount; currentProj++)
+    {
+        card = $('#project-card-' + currentProj);
+        var skillsContainer = card.find('#skills-container');
+        var skillsCount =parseInt(skillsContainer.find('#skill-count').html());
+        var i;
+        cardSkills = [];
+
+        for(i = 0; i < skillsCount ; i++)
+        {
+            var skillObj = skillsContainer.find('#skill-' + i );
+            skillStr = skillObj.html();
+            cardSkills.push(skillStr);
+
+            // if current skill is the one that raised the event
+            // add/remove the selected class
+            if (skillStr === filterSkill)
+            {
+                var selected = "selected";
+
+                // toggle skill selected class
+                if(skillObj.hasClass(selected) && skillFilterList.indexOf(skillStr) === -1)
+                {
+                    skillObj.removeClass(selected);
+                }
+                else
+                {
+                    skillObj.addClass(selected);
+                }
+            }
+        }
+
+        //
+        // show card only if it contains all the skills in the skill filter list
+        //
+        var showCard = cardSkills.filter(function (elem) {
+            return skillFilterList.indexOf(elem) > -1;
+        }).length == skillFilterList.length
+
+
+        if (showCard)
+        {
+            card.fadeIn();
+        }
+        else 
+        {
+            card.fadeOut();
+        }
+    }
 }
 
 imageExists = function (url, callback) {
