@@ -82,13 +82,17 @@ a.morelink {
     
 }
 
-.logo a {
+.logo a 
+{
     color: white;
+    font-family: Enriqueta,serif;
+    font-size: 1.35em;
 }
 
 div.justify-content-between
 {
-    margin-left: 0px;
+    padding-left: 0px;
+    margin-left: 52px;
     margin-right: 0px;
     max-width: 100%;
 }
